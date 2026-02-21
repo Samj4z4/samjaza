@@ -1,0 +1,755 @@
+:root {
+  --bg-main: #050816;
+  --bg-alt: #070b1f;
+  --surface: rgba(13, 17, 40, 0.92);
+  --surface-soft: rgba(15, 23, 42, 0.8);
+  --primary: #00f5ff;
+  --primary-soft: rgba(0, 245, 255, 0.16);
+  --secondary: #ff007a;
+  --accent: #ffc857;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border-subtle: rgba(148, 163, 184, 0.3);
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.95);
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+}
+
+/* Basic reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  /* Global subtle arena-style background */
+  background:
+    radial-gradient(circle at top, rgba(0, 245, 255, 0.16), transparent 55%),
+    radial-gradient(circle at bottom, rgba(255, 0, 122, 0.2), #020617);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* SECOND BACKGROUND WRAPPER FOR LOWER SECTION */
+.lower-bg {
+  background:
+    linear-gradient(to bottom, rgba(5, 8, 22, 0.96), rgba(2, 6, 23, 0.98)),
+    url("../assets/images/SamWolfArena2.jpg") center/cover no-repeat;
+}
+
+/* Layout helpers */
+.container {
+  width: min(1120px, 94vw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 80px 0;
+  background: transparent;
+}
+
+.section-alt {
+  background: transparent;
+}
+
+.section-title {
+  font-family: "Orbitron", system-ui, sans-serif;
+  font-size: clamp(1.8rem, 2.2vw, 2.2rem);
+  text-align: left;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  width: 72px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+  left: 0;
+  bottom: -10px;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  max-width: 460px;
+  font-size: 0.98rem;
+}
+
+/* NAVBAR */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+    to bottom,
+    rgba(2, 6, 23, 0.85),
+    rgba(2, 6, 23, 0.65),
+    transparent
+  );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.logo {
+  font-family: "Orbitron", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.logo-accent {
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+.logo-thin {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 26px;
+  font-size: 0.94rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+  border-radius: 999px;
+  transition: width 0.18s ease-out;
+}
+
+.nav-links a:hover {
+  color: var(--text-main);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* HERO SECTION - FIRST BACKGROUND */
+.hero {
+  position: relative;
+  padding: 72px 0 90px;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(5, 8, 22, 0.95)),
+    url("../assets/images/SamWolfArena.jpg") center/cover no-repeat fixed;
+  z-index: -1;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: center;
+  max-width: 100%;
+}
+
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  font-size: 0.75rem;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-family: "Orbitron", system-ui, sans-serif;
+  font-size: clamp(2.4rem, 3.3vw, 3.3rem);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-sub {
+  color: var(--text-muted);
+  max-width: 520px;
+  font-size: 0.98rem;
+  margin-bottom: 24px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.18s ease-out,
+    background 0.18s ease-out,
+    border-color 0.18s ease-out;
+}
+
+.btn-primary {
+  background: radial-gradient(
+    circle at top left,
+    rgba(0, 245, 255, 0.45),
+    rgba(0, 245, 255, 0.16)
+  );
+  border-color: rgba(56, 189, 248, 0.7);
+  color: #020617;
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.6),
+    0 18px 40px rgba(8, 47, 73, 0.85);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.7),
+    0 22px 48px rgba(8, 47, 73, 0.96);
+}
+
+.btn-ghost {
+  background: rgba(15, 23, 42, 0.7);
+  color: var(--text-main);
+  border-color: rgba(148, 163, 184, 0.5);
+}
+
+.btn-ghost:hover {
+  border-color: var(--primary);
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 245, 255, 0.1),
+    rgba(15, 23, 42, 0.8)
+  );
+}
+
+/* Hero stats */
+.hero-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  min-width: 88px;
+}
+
+.stat span {
+  display: block;
+  font-family: "Orbitron", system-ui, sans-serif;
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.stat p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Hero visual */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-orbit {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 245, 255, 0.2),
+    transparent 60%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.logo-core {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(148, 163, 184, 0.5);
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617);
+}
+
+.logo-core img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(148, 163, 184, 0.55);
+  animation: orbit-rotate 18s linear infinite;
+}
+
+.orbit-one {
+  width: 210px;
+  height: 210px;
+}
+
+.orbit-two {
+  width: 240px;
+  height: 240px;
+  animation-duration: 26s;
+}
+
+.orbit-three {
+  width: 270px;
+  height: 270px;
+  animation-duration: 34s;
+}
+
+/* SERVICES */
+#services {
+  background: transparent;
+}
+
+.services-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.service-card {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.94),
+    rgba(15, 23, 42, 0.85)
+  );
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 0.16s ease-out,
+    border-color 0.16s ease-out,
+    box-shadow 0.16s ease-out,
+    background 0.16s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 245, 255, 0.18),
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.9);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.98),
+    rgba(15, 23, 42, 0.9)
+  );
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  background: radial-gradient(
+    circle at top left,
+    rgba(0, 245, 255, 0.3),
+    rgba(15, 23, 42, 0.6)
+  );
+}
+
+.service-icon i {
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.service-card h3 {
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.service-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+/* ABOUT */
+#about {
+  background: transparent;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.profile-ring {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 245, 255, 0.2),
+    transparent 65%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-ring::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: inherit;
+  border: 1px solid rgba(96, 165, 250, 0.6);
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.55);
+}
+
+.profile-ring img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.about-text p {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.about-list {
+  list-style: none;
+  margin-top: 14px;
+}
+
+.about-list li {
+  font-size: 0.92rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.about-list i {
+  color: var(--primary);
+}
+
+/* CONTACT */
+#contact {
+  background: transparent;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 36px;
+  align-items: flex-start;
+}
+
+/* single-column contact (no form) */
+.contact-single-column {
+  grid-template-columns: 1fr;
+}
+
+.contact-info {
+  margin: 20px 0 16px;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.contact-info i {
+  color: var(--primary);
+  width: 18px;
+}
+
+.contact-info a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  text-decoration: none;
+  transition:
+    transform 0.14s ease-out,
+    border-color 0.14s ease-out,
+    background 0.14s ease-out;
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 245, 255, 0.12),
+    rgba(15, 23, 42, 0.9)
+  );
+}
+
+/* WHATSAPP FLOAT BUTTON */
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.7);
+  z-index: 60;
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 16px 40px rgba(37, 211, 102, 0.9);
+}
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid rgba(55, 65, 81, 0.9);
+  background: radial-gradient(
+    circle at bottom,
+    rgba(15, 23, 42, 0.9),
+    #020617
+  );
+  padding: 24px 0;
+  margin-top: 60px;
+}
+
+.footer p {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(148, 163, 184, 0.8);
+}
+
+/* ANIMATIONS */
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1100px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero-visual {
+    order: -1;
+    margin-bottom: 24px;
+  }
+
+  .nav-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav-links {
+    gap: 18px;
+    font-size: 0.9rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 60px 0 70px;
+    min-height: 100vh;
+  }
+
+  .logo-orbit {
+    width: 220px;
+    height: 220px;
+  }
+
+  .logo-core {
+    width: 130px;
+    height: 130px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .hero-bg-overlay {
+    background:
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(5, 8, 22, 0.98)),
+      url("../assets/images/SamWolfArena.jpg") center top/cover no-repeat fixed;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+}

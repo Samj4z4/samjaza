@@ -1,0 +1,13 @@
+project-folder/                 ← Root (where index.html lives)
+├── index.html                  ← Main HTML file
+├── css/
+│   └── style.css              ← Your CSS file (paste the corrected CSS here)
+├── assets/
+│   └── images/
+│       ├── SamWolfArena.jpg    ← Hero background (1st background)
+│       ├── SamWolfArena2.jpg   ← Lower section background (2nd background)
+│       ├── SharonWolfLogo.png  ← Hero logo
+│       ├── SharonProfile2025.png ← About profile photo
+│       └── SharonWolfIcon.png  ← Favicon
+└── js/
+    └── main.js                ← JavaScript (can be empty for now)
